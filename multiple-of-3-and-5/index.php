@@ -19,9 +19,10 @@ echo Timer::resourceUsage() . PHP_EOL;
 
 // O(N)
 // Time: ~0.0004
-function forApproach($max) {
+function forApproach($max)
+{
     $sum = 0;
-    for($i = 1; $i < $max; $i++) {
+    for ($i = 1; $i < $max; $i++) {
         if ($i % 3 === 0 || $i % 5 === 0) {
             $sum += $i;
         }
@@ -30,13 +31,14 @@ function forApproach($max) {
 }
 
 // Time: ~0.00017
-function sumApproach($max) {
+function sumApproach($max)
+{
     $sum = 0;
-    for($i = 3; $i < $max; $i += 3) {
+    for ($i = 3; $i < $max; $i += 3) {
         $sum += $i;
     }
 
-    for($i = 5; $i < $max; $i += 5) {
+    for ($i = 5; $i < $max; $i += 5) {
         $sum += $i;
     }
 
@@ -50,10 +52,11 @@ function sumApproach($max) {
 // Time: 1.78^e-5
 // https://projecteuler.net/thread=1#103
 // arithmetic progressions
-function arithmeticProgessionApproach($max) {
+function arithmeticProgessionApproach($max)
+{
     return (int) (
-        1.5 * (int)(($max-1)/3) * (int)(($max+2)/3) 
-      + 2.5*(int)(($max-1)/5)*(int)(($max+4)/5) 
+        1.5 * (int)(($max-1)/3) * (int)(($max+2)/3)
+      + 2.5*(int)(($max-1)/5)*(int)(($max+4)/5)
       - 7.5*(int)(($max-1)/15)*(int)(($max+14)/15)
     );
 }
