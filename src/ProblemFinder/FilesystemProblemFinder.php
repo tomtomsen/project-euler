@@ -42,7 +42,7 @@ final class FilesystemProblemFinder implements ProblemFinder
                             $problems[] = $reflection->newInstance();
                         }
                     } catch (\ReflectionException $e) {
-                        throw new $e();
+                        throw $e;
                     }
                 }
             }

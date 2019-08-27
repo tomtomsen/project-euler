@@ -1,13 +1,26 @@
 {
+	"name": "tomtomsen/project-euler",
+	"type": "project",
+	"authors": [
+		{
+			"name": "tom tomsen",
+			"email": "tom.tomsen@mailbox.org"
+		}
+	],
+	"homepage": "https://projecteuler.net",
 	"autoload": {
 		"psr-4": {
 			"tomtomsen\\ProjectEuler\\": "src/"
 		}
 	},
 	"require-dev": {
-		"phpunit/php-timer": "^2.1"
+		"phpunit/php-timer": "^2.1",
+		"phpro/grumphp": "^0.15.2"
 	},
 	"require": {
 		"symfony/console": "^4.3"
+	},
+	"config": {
+		"bin-dir": "tools"
 	}
 }

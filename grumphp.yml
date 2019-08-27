@@ -1,0 +1,7 @@
+parameters:
+    git_dir: .
+    bin_dir: tools
+    tasks:
+        phpcsfixer2: ~
+        psalm: ~
+        jsonlint: ~
