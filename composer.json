@@ -18,7 +18,12 @@
 		"phpro/grumphp": "^0.15.2"
 	},
 	"require": {
-		"symfony/console": "^4.3"
+		"symfony/console": "^4.3",
+		"psr/http-client": "^1.0",
+		"symfony/dom-crawler": "^4.3",
+		"nyholm/psr7": "^1.2",
+		"symfony/http-client": "^4.3",
+		"symfony/css-selector": "^4.3"
 	},
 	"config": {
 		"bin-dir": "tools"

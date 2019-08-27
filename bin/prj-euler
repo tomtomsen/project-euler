@@ -3,8 +3,11 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use Symfony\Component\HttpClient\Psr18Client;
 use tomtomsen\ProjectEuler\Application;
 
+use tomtomsen\ProjectEuler\Command\GenerateCommand;
+use tomtomsen\ProjectEuler\ProblemClassGenerator\TemplateBasedProblemClassGenerator;
 use tomtomsen\ProjectEuler\ProblemFinder\FilesystemProblemFinder;
 use tomtomsen\ProjectEuler\Command\RunCommand;
 
@@ -12,5 +15,9 @@ $application = new Application();
 
 $finder = new FilesystemProblemFinder(__DIR__ . '/../problems');
 $application->add(new RunCommand($finder, 'run'));
+
+$client = new Psr18Client();
+$classGenerator = new TemplateBasedProblemClassGenerator();
+$application->add(new GenerateCommand($client, $classGenerator, 'generate'));
 
 $application->run();

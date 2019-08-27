@@ -1,0 +1,32 @@
+<?php
+
+declare(strict_types=1);
+
+namespace tomtomsen\ProjectEuler\Problems\Problem{number};
+
+use tomtomsen\ProjectEuler\Problem;
+
+final class {className} implements Problem
+{
+	public function number() : int
+	{
+		return {number};
+	}
+
+	public function name() : string
+	{
+		return '{name}';
+	}
+
+	public function description() : string
+	{
+		return <<<'DESCRIPTION'
+            {description}
+            DESCRIPTION;
+	}
+
+	public function run() : string
+	{
+		throw new \RuntimeException('not implemented yet');
+	}
+}
