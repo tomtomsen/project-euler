@@ -13,11 +13,6 @@ final class SumSquareDifference implements Problem
         return 6;
     }
 
-    public function url() : string
-    {
-        return 'https://projecteuler.net/problem=6';
-    }
-
     public function name() : string
     {
         return 'Sum square difference';

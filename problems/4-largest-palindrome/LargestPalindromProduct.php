@@ -13,11 +13,6 @@ final class LargestPalindromProduct implements Problem
         return 4;
     }
 
-    public function url() : string
-    {
-        return 'https://projecteuler.net/problem=4';
-    }
-
     public function name() : string
     {
         return 'Largest palindrome product';

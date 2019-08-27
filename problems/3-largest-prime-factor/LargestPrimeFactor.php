@@ -15,11 +15,6 @@ final class LargestPrimeFactor implements Problem
         return 3;
     }
 
-    public function url() : string
-    {
-        return 'https://projecteuler.net/problem=3';
-    }
-
     public function name() : string
     {
         return 'Largest prime factor';

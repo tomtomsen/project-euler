@@ -51,7 +51,7 @@ final class RunCommand extends SymfonyCommand
         $problem = $problemsByName[$problemChoice];
 
         $io->title($problem->name());
-        $io->text($problem->url());
+        $io->text("https://projecteuler.net/problem={$problem->number()}");
         $io->block(
             $problem->description(),
             null,

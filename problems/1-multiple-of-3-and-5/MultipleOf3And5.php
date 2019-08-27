@@ -20,11 +20,6 @@ final class MultipleOf3And5 implements Problem
         return 'Multiple of 3 and 5';
     }
 
-    public function url() : string
-    {
-        return 'https://projecteuler.net/problem=1';
-    }
-
     public function description() : string
     {
         return <<<'DESCRIPTION'

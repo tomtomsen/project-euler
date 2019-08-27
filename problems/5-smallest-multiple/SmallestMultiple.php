@@ -13,11 +13,6 @@ final class SmallestMultiple implements Problem
         return 5;
     }
 
-    public function url() : string
-    {
-        return 'https://projecteuler.net/problem=5';
-    }
-
     public function name() : string
     {
         return 'Smallest multiple';

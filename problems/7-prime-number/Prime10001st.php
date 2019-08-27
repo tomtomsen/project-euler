@@ -15,11 +15,6 @@ final class Prime10001st implements Problem
         return 7;
     }
 
-    public function url() : string
-    {
-        return 'https://projecteuler.net/problem=7';
-    }
-
     public function name() : string
     {
         return '10001st prime';

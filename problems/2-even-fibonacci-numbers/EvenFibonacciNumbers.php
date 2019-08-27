@@ -13,11 +13,6 @@ final class EvenFibonacciNumbers implements Problem
         return 2;
     }
 
-    public function url() : string
-    {
-        return 'https://projecteuler.net/problem=2';
-    }
-
     public function name() : string
     {
         return 'Even Fibonacci numbers';
