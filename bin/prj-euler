@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use tomtomsen\ProjectEuler\Application;
+
+use tomtomsen\ProjectEuler\ProblemFinder\FilesystemProblemFinder;
+use tomtomsen\ProjectEuler\Command\RunCommand;
+
+$application = new Application();
+
+$finder = new FilesystemProblemFinder(__DIR__ . '/../problems');
+$application->add(new RunCommand($finder, 'run'));
+
+$application->run();
