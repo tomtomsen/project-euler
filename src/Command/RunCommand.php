@@ -15,6 +15,7 @@ use tomtomsen\ProjectEuler\ProblemFinder\ProblemFinder;
 
 final class RunCommand extends SymfonyCommand
 {
+    /** @var ProblemFinder */
     private $finder;
 
     public function __construct(ProblemFinder $finder, string $name = null)

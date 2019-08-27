@@ -28,16 +28,21 @@ final class FilesystemProblemFinder implements ProblemFinder
             if ($file->isFile()) {
                 $preDeclaredClasses = \get_declared_classes();
 
+                /** @psalm-suppress UnresolvableInclude */
                 require_once $file->getRealPath();
                 $postDeclaredClasses = \get_declared_classes();
 
                 $newlyDeclaredClasses = \array_diff($postDeclaredClasses, $preDeclaredClasses);
 
                 foreach ($newlyDeclaredClasses as $className) {
-                    $reflection = new ReflectionClass($className);
+                    try {
+                        $reflection = new ReflectionClass($className);
 
-                    if ($reflection->isSubclassOf(Problem::class)) {
-                        $problems[] = $reflection->newInstance();
+                        if ($reflection->isSubclassOf(Problem::class)) {
+                            $problems[] = $reflection->newInstance();
+                        }
+                    } catch (\ReflectionException $e) {
+                        throw new $e();
                     }
                 }
             }
