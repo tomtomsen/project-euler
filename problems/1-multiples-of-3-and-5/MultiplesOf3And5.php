@@ -6,7 +6,7 @@ namespace tomtomsen\ProjectEuler\Problems\Problem1;
 
 use tomtomsen\ProjectEuler\Problem;
 
-final class MultipleOf3And5 implements Problem
+final class MultiplesOf3And5 implements Problem
 {
     public const MAX = 1000;
 
