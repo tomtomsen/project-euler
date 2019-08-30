@@ -48,13 +48,13 @@ final class Divisibilitystreaks implements Problem
     }
 
     /*
-    
+
     long long gcd(long long a, long long b)
     { return b ? gcd(b, a%b) : a; }
-    
+
     long long lcm(long long a, long long b)
     { return a * (b / gcd(a, b)); }
-    
+
     long long p(int s, long long n)
     {
         long long l = 1;
@@ -66,48 +66,17 @@ final class Divisibilitystreaks implements Problem
      */
     public function run() : string
     {
-        // $this->analyze();
-
-        return '' . $this->P3();
-    }
-
-    private function analyze() : void
-    {
-        $this->debug = true;
-        $c = 1;
-        $x = 10;
-
-        for ($i = 27719; 4 ** 10 > $i; ++$i) {
-            $s = $this->streak(BigInteger::of($i));
-
-            if ($s >= $x) {
-                echo \str_pad("{$c}", 4, ' ', \STR_PAD_LEFT) . ": {$i}";
-
-                if ($s > $x) {
-                    echo '*';
-                }
-                echo ' ' . \PHP_EOL;
-                ++$c;
-            }
-        }
-        \var_dump($c);
-
-        die;
-    }
-
-    private function P3() : float
-    {
         $base = 4;
 
         $cache = [
-            2 => BigInteger::of(2),
+            2 => BigInteger::of('2'),
         ];
         $p = [
-            '1' => BigInteger::of(1),
+            '1' => BigInteger::of('1'),
         ];
 
         for ($i = 2; 31 >= $i; ++$i) {
-            $max = BigInteger::of($base)->power($i);
+            $max = BigInteger::of("{$base}")->power($i);
             echo "streak: {$i}, max: {$max} ({$base}^{$i})" . \PHP_EOL;
 
             $n1 = null;
@@ -119,10 +88,10 @@ final class Divisibilitystreaks implements Problem
                 $p1 = 0;
 
                 for (
-                    $n = BigInteger::of(1)->multipliedBy($n1_prev)->plus(1),
+                    $n = BigInteger::of('1')->multipliedBy($n1_prev)->plus('1'),
                     $j = 2;
                     $n->isLessThan($max);
-                    $n = BigInteger::of($j)->multipliedBy($n1_prev)->plus(1),
+                    $n = BigInteger::of("{$j}")->multipliedBy($n1_prev)->plus('1'),
                     $j++
                 ) {
                     $this->debug("check: {$n}");
@@ -137,8 +106,8 @@ final class Divisibilitystreaks implements Problem
                             } else {
                                 $p2 = $j;
                                 $stepsize = $p2 - $p1;
-                                $times = $max->minus(1)->dividedBy($n1_prev, RoundingMode::DOWN);
-                                $d = $times->minus($times->dividedBy($stepsize, RoundingMode::DOWN));
+                                $times = $max->minus('1')->dividedBy($n1_prev, RoundingMode::DOWN);
+                                $d = $times->minus($times->dividedBy("{$stepsize}", RoundingMode::DOWN));
                                 $p[$i] = $d;
                                 echo "ABORT@{$i}! stepsize: {$stepsize}, {$d} added " . \PHP_EOL;
 
@@ -147,7 +116,7 @@ final class Divisibilitystreaks implements Problem
 
                             if (!isset($cache[$s])) {
                                 $this->debug("remember: {$n} in streak {$s}");
-                                $cache[$s] = $n->minus(1);
+                                $cache[$s] = $n->minus('1');
                             } else {
                                 $this->debug("already remembered streak {$s}");
                             }
@@ -159,15 +128,14 @@ final class Divisibilitystreaks implements Problem
             }
         }
 
-        echo "Sum: {$sum}" . \PHP_EOL;
         echo 'Cache: ' . \PHP_EOL;
 
         foreach ($cache as $key => $value) {
-            echo "  {$key}: {$value->plus(1)}" . \PHP_EOL;
+            echo "  {$key}: {$value->plus('1')}" . \PHP_EOL;
         }
 
         echo 'P: ' . \PHP_EOL;
-        $sum = BigInteger::of(0);
+        $sum = BigInteger::of('0');
 
         foreach ($p as $key => $value) {
             echo "  P({$key}, {$base}^{$key}): {$value}" . \PHP_EOL;
@@ -175,18 +143,18 @@ final class Divisibilitystreaks implements Problem
         }
 
         // 1617243
-        return $sum->toInt();
+        return "{$sum}";
     }
 
     private function streak(BigInteger $n) : int
     {
-        if (!($n->and(1)->toInt())) {
+        if (!($n->and('1')->toInt())) {
             return 1;
         }
 
         $k = 1;
 
-        while ($n->minus(1)->plus($k)->remainder($k)->isEqualTo(0)) {
+        while ($n->minus('1')->plus("{$k}")->remainder("{$k}")->isEqualTo('0')) {
             ++$k;
         }
 
