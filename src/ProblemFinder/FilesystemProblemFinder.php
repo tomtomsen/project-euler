@@ -24,8 +24,9 @@ final class FilesystemProblemFinder implements ProblemFinder
 
         $it = new RecursiveDirectoryIterator($this->directory);
 
+        /** @var \SplFileInfo $file */
         foreach (new RecursiveIteratorIterator($it) as $file) {
-            if ($file->isFile()) {
+            if ($file->isFile() && 'php' === $file->getExtension()) {
                 $preDeclaredClasses = \get_declared_classes();
 
                 /** @psalm-suppress UnresolvableInclude */
