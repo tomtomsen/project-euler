@@ -8,8 +8,14 @@ final class TemplateBasedProblemClassGenerator implements ProblemClassGenerator
 {
     public function generate(int $number, string $name, string $description = '') : string
     {
-        $tpl = \file_get_contents(__DIR__ . '/ProblemClass.tpl.dist');
+        $fileName = __DIR__ . '/ProblemClass.tpl.dist';
+        $tpl = \file_get_contents($fileName);
 
+        if (!$tpl) {
+            throw new \RuntimeException('couldnt load template ' . $fileName);
+        }
+
+        /** @phan-suppress-next-line PhanParamSuspiciousOrder */
         return \strtr(
             $tpl,
             [
@@ -18,8 +24,8 @@ final class TemplateBasedProblemClassGenerator implements ProblemClassGenerator
                 '{className}' => \preg_replace('~ ~', '', $name),
                 '{description}' => \strtr(
                     \trim(
-                            $description,
-                            "\n\r "
+                        $description,
+                        "\n\r "
                         ),
                     [
                         \PHP_EOL => \PHP_EOL . '            ',

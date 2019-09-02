@@ -4,7 +4,8 @@ parameters:
     tasks:
         composer_normalize: ~
         composer_require_checker: ~
+        jsonlint: ~
+        phan: ~
         phpcsfixer2:
             config: .php_cs
         psalm: ~
-        jsonlint: ~

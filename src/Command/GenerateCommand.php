@@ -75,6 +75,7 @@ final class GenerateCommand extends SymfonyCommand
         \mkdir($dir, 0755, true);
 
         \file_put_contents(
+            /** @phan-suppress-next-line PhanParamSuspiciousOrder */
             \strtr(
                 '{dir}/{file}.php',
                 [
@@ -88,6 +89,7 @@ final class GenerateCommand extends SymfonyCommand
 
     protected function url(int $problem)
     {
+        /** @phan-suppress-next-line PhanParamSuspiciousOrder */
         return \strtr(
             'https://projecteuler.net/problem={problem}',
             [
@@ -98,6 +100,7 @@ final class GenerateCommand extends SymfonyCommand
 
     protected function getDirectory(string $baseDir, int $problemNr, string $title) : string
     {
+        /** @phan-suppress-next-line PhanParamSuspiciousOrder */
         return \strtr(
             '{dir}/{nr}-{title}',
             [

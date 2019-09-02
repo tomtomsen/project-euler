@@ -54,7 +54,7 @@ final class RunCommand extends SymfonyCommand
             $problemsByName[$problem->name()] = $problem;
         }
 
-        if (\is_numeric($problemNr) && \array_key_exists($problemNr, $problemsByNumber)) {
+        if (\array_key_exists($problemNr, $problemsByNumber)) {
             $problem = $problemsByNumber[$problemNr];
         } else {
             $question = new ChoiceQuestion(
