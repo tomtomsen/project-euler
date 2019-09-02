@@ -2,4 +2,5 @@
 <phive xmlns="https://phar.io/phive">
   <phar name="php-cs-fixer" version="^2.15.1" installed="2.15.1" location="./tools/php-cs-fixer" copy="true"/>
   <phar name="psalm" version="^3.4.12" installed="3.4.12" location="./tools/psalm" copy="true"/>
+  <phar name="composer-require-checker" version="^2.0.0" installed="2.0.0" location="./tools/composer-require-checker" copy="true"/>
 </phive>

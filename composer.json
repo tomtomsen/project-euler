@@ -1,32 +1,36 @@
 {
 	"name": "tomtomsen/project-euler",
 	"type": "project",
+	"description": "my implementations of the project euler problems",
+	"homepage": "https://projecteuler.net",
 	"authors": [
 		{
 			"name": "tom tomsen",
 			"email": "tom.tomsen@mailbox.org"
 		}
 	],
-	"homepage": "https://projecteuler.net",
+	"require": {
+		"php": "^7.3",
+		"ext-mbstring": "*",
+		"brick/math": "^0.8.8",
+		"localheinz/composer-normalize": "^1.3",
+		"nyholm/psr7": "^1.2",
+		"phpunit/php-timer": "^2.1",
+		"psr/http-client": "^1.0",
+		"symfony/console": "^4.3",
+		"symfony/css-selector": "^4.3",
+		"symfony/dom-crawler": "^4.3",
+		"symfony/http-client": "^4.3"
+	},
+	"require-dev": {
+		"phpro/grumphp": "^0.15.2"
+	},
+	"config": {
+		"bin-dir": "tools"
+	},
 	"autoload": {
 		"psr-4": {
 			"tomtomsen\\ProjectEuler\\": "src/"
 		}
-	},
-	"require-dev": {
-		"phpunit/php-timer": "^2.1",
-		"phpro/grumphp": "^0.15.2"
-	},
-	"require": {
-		"symfony/console": "^4.3",
-		"psr/http-client": "^1.0",
-		"symfony/dom-crawler": "^4.3",
-		"nyholm/psr7": "^1.2",
-		"symfony/http-client": "^4.3",
-		"symfony/css-selector": "^4.3",
-		"brick/math": "^0.8.8"
-	},
-	"config": {
-		"bin-dir": "tools"
 	}
 }
