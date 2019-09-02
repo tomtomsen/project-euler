@@ -5,6 +5,7 @@ parameters:
         composer_normalize: ~
         composer_require_checker: ~
         jsonlint: ~
+        phpversion: ~
         phpcsfixer2:
             config: .php_cs
         phan: ~
