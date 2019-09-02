@@ -6,6 +6,7 @@ parameters:
         composer_require_checker: ~
         jsonlint: ~
         phpversion: ~
+        securitychecker: ~
         phpcsfixer2:
             config: .php_cs
         phan: ~
@@ -14,3 +15,5 @@ parameters:
             level: ~
             ignore_patterns: ['.phan/']
         psalm: ~
+        xmllint: ~
+        yamllint: ~
