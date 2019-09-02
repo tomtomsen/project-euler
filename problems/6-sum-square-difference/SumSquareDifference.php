@@ -35,7 +35,7 @@ final class SumSquareDifference implements Problem
         $square = 0;
         $sum = 0;
 
-        for ($i = 1; $i <= $n; ++$i) {
+        for ($i = 1; 100 >= $i; ++$i) {
             $square += $i * $i;
             $sum += $i;
         }

@@ -9,7 +9,7 @@ use tomtomsen\ProjectEuler\Problem;
 interface ProblemFinder
 {
     /**
-     * @return Problem[]
+     * @return array<int, Problem>
      */
     public function find() : array;
 }

@@ -34,9 +34,15 @@ final class RunCommand extends SymfonyCommand
             ->addArgument(self::ARGUMENT_PROBLEM, InputArgument::OPTIONAL, 'Run this specific problem', null);
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output) : void
+    protected function execute(InputInterface $input, OutputInterface $output) : int
     {
-        $problemNr = (int) $input->getArgument(self::ARGUMENT_PROBLEM);
+        $problemNr = $input->getArgument(self::ARGUMENT_PROBLEM);
+
+        if (!\is_numeric($problemNr)) {
+            throw new \RuntimeException(self::ARGUMENT_PROBLEM . ' expected to be numeric');
+        }
+        $problemNr = (int) $problemNr;
+
         $io = new SymfonyStyle($input, $output);
 
         $problems = $this->finder->find();
@@ -83,5 +89,7 @@ final class RunCommand extends SymfonyCommand
 
         $io->success('Answer: ' . $result);
         $io->comment('Time: ' . Timer::secondsToTimeString($time));
+
+        return 0;
     }
 }

@@ -58,7 +58,7 @@ final class HighlyDivisibleTriangularNumber implements Problem
             if (0 === $n % $i) {
                 $factorials[] = $i;
 
-                $div = (int) $n / $i;
+                $div = $n / $i;
 
                 if ($div !== $i) {
                     $factorials[] = $div;

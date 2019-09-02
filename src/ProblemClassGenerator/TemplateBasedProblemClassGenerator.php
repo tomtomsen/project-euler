@@ -11,7 +11,7 @@ final class TemplateBasedProblemClassGenerator implements ProblemClassGenerator
         $fileName = __DIR__ . '/ProblemClass.tpl.dist';
         $tpl = \file_get_contents($fileName);
 
-        if (!$tpl) {
+        if (false === $tpl) {
             throw new \RuntimeException('couldnt load template ' . $fileName);
         }
 

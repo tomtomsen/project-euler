@@ -11,6 +11,7 @@ use tomtomsen\ProjectEuler\Problem;
 
 final class FilesystemProblemFinder implements ProblemFinder
 {
+    /** @var string */
     private $directory;
 
     public function __construct(string $directory)
@@ -40,7 +41,9 @@ final class FilesystemProblemFinder implements ProblemFinder
                         $reflection = new ReflectionClass($className);
 
                         if ($reflection->isSubclassOf(Problem::class)) {
-                            $problems[] = $reflection->newInstance();
+                            /** @var Problem $problem */
+                            $problem = $reflection->newInstance();
+                            $problems[] = $problem;
                         }
                     } catch (\ReflectionException $e) {
                         throw $e;

@@ -10,6 +10,7 @@ use tomtomsen\ProjectEuler\Problem;
 
 final class Divisibilitystreaks implements Problem
 {
+    /** @var bool */
     private $debug = false;
 
     public function number() : int
@@ -131,7 +132,7 @@ final class Divisibilitystreaks implements Problem
 
     private function streak(BigInteger $n) : int
     {
-        if (!($n->and('1')->toInt())) {
+        if (0 === ($n->and('1')->toInt())) {
             return 1;
         }
 
@@ -144,7 +145,7 @@ final class Divisibilitystreaks implements Problem
         return $k - 1;
     }
 
-    private function debug($msg) : void
+    private function debug(string $msg) : void
     {
         if ($this->debug) {
             echo '> ' . $msg . \PHP_EOL;

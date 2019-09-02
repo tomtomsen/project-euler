@@ -41,9 +41,14 @@ final class GenerateCommand extends SymfonyCommand
             ->addOption(self::OPTION_DIRECTORY, 'd', InputOption::VALUE_OPTIONAL, 'Directory to save problem', \realpath(__DIR__ . '/../../problems'));
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output) : void
+    protected function execute(InputInterface $input, OutputInterface $output) : int
     {
-        $problemNr = (int) $input->getArgument(self::ARGUMENT_PROBLEM);
+        $problemNr = $input->getArgument(self::ARGUMENT_PROBLEM);
+
+        if (!\is_numeric($problemNr)) {
+            throw new \RuntimeException('problemNr expected to be numeric');
+        }
+        $problemNr = (int) $problemNr;
         $baseDirectory = $input->getOption(self::OPTION_DIRECTORY);
 
         if (\is_array($baseDirectory)) {
@@ -85,9 +90,11 @@ final class GenerateCommand extends SymfonyCommand
             ),
             $classTpl
         );
+
+        return 0;
     }
 
-    protected function url(int $problem)
+    protected function url(int $problem) : string
     {
         /** @phan-suppress-next-line PhanParamSuspiciousOrder */
         return \strtr(

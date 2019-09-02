@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace tomtomsen\ProjectEuler\Problems\Problem1;
+namespace tomtomsen\ProjectEuler\Problems;
 
 use tomtomsen\ProjectEuler\Problem;
 

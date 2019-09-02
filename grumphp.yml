@@ -8,4 +8,8 @@ parameters:
         phan: ~
         phpcsfixer2:
             config: .php_cs
+        phpstan:
+            configuration: phpstan.neon
+            level: ~
+            ignore_patterns: ['.phan/']
         psalm: ~

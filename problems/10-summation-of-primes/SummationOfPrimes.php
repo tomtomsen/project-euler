@@ -40,7 +40,7 @@ final class SummationOfPrimes implements Problem
     }
 
     // https://stackoverflow.com/a/16763365
-    private function isPrime($num)
+    private function isPrime(int $num) : bool
     {
         //1 is not prime. See: http://en.wikipedia.org/wiki/Prime_number#Primality_of_one
         if (1 === $num) {

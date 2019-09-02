@@ -29,6 +29,8 @@ final class SmallestMultiple implements Problem
     public function run() : string
     {
         for ($i = 20; 0 < $i; $i += 20) {
+            $j = 0;
+
             for ($j = 19; 0 < $j; --$j) {
                 if (0 !== $i % $j) {
                     break;

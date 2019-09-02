@@ -23,7 +23,9 @@
 		"symfony/http-client": "^4.3"
 	},
 	"require-dev": {
-		"phpro/grumphp": "^0.15.2"
+		"phpro/grumphp": "^0.15.2",
+		"phpstan/phpstan-deprecation-rules": "^0.11.2",
+		"phpstan/phpstan-strict-rules": "^0.11.1"
 	},
 	"config": {
 		"bin-dir": "tools"
@@ -31,6 +33,9 @@
 	"autoload": {
 		"psr-4": {
 			"tomtomsen\\ProjectEuler\\": "src/"
-		}
+		},
+		"classmap": [
+			"problems/"
+		]
 	}
 }

@@ -42,6 +42,6 @@ final class LargestPalindromProduct implements Problem
             }
         }
 
-        return $max[2];
+        return '' . $max[2];
     }
 }
