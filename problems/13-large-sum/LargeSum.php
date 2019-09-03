@@ -234,7 +234,7 @@ final class LargeSum implements Problem
     {
         $sum = $this->sumStrings();
 
-        return \mb_substr((string) $sum, 0, 10);
+        return \mb_substr($sum, 0, 10);
     }
 
     // see: https://www.geeksforgeeks.org/sum-two-large-number
@@ -266,13 +266,14 @@ final class LargeSum implements Problem
             $carry = (int) ($sum / 10);
         }
 
-        for ($idx = $len1; $idx < $len2; ++$idx ) {
+        for ($idx = $len1; $idx < $len2; ++$idx) {
+            /** @psalm-suppress InvalidArrayOffset */
             $sum = (int) $n2[$idx] + $carry;
             $str .= (string) ($sum % 10);
             $carry = (int) ($sum / 10);
         }
 
-        if ($carry) {
+        if (0 < $carry) {
             $str .= (string) $carry;
         }
 
