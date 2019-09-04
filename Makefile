@@ -17,6 +17,18 @@ shell: build
 			 tomtomsen/project-euler:latest \
 			 	sh
 
+.PHONY: sudo-shell
+sudo-shell: build
+	docker \
+		run \
+			--rm \
+			 -ti \
+			 --user root:root \
+			 --volume ${PWD}:/data \
+			 --workdir /data \
+			 tomtomsen/project-euler:latest \
+			 	sh
+
 .PHONY: check
 check: build
 	docker \
