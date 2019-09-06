@@ -364,6 +364,7 @@ return [
         'src',
         'vendor/brick/math/src',
         'vendor/localheinz/composer-normalize/src',
+        'vendor/nette',
         'vendor/nyholm/psr7/src',
         'vendor/phpro/grumphp/src',
         'vendor/phpunit/php-timer/src',

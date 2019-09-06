@@ -14,6 +14,7 @@ parameters:
             configuration: phpstan.neon
             level: ~
             ignore_patterns: ['.phan/']
-        psalm: ~
+        psalm:
+            config: psalm.xml
         xmllint: ~
         yamllint: ~
