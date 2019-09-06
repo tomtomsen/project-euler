@@ -33,7 +33,15 @@ final class NamesScores implements Problem
 
         $nameFile = __DIR__ . '/p022_names.txt';
         $nameFileContent = \file_get_contents($nameFile);
+
+        if (false === $nameFileContent) {
+            throw new \RuntimeException("cannot read file '{$nameFile}'");
+        }
         $nameFileContent = \preg_replace('~[^,A-Z]~', '', $nameFileContent);
+
+        if (null === $nameFileContent) {
+            throw new \RuntimeException('failed to execute preg_replace');
+        }
         $names = \explode(',', $nameFileContent);
         \sort($names);
 
