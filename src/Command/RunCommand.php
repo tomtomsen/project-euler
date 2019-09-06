@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace tomtomsen\ProjectEuler\Command;
 
+use Nette\Neon\Neon;
 use SebastianBergmann\Timer\Timer;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -87,8 +88,31 @@ final class RunCommand extends SymfonyCommand
         $result = $problem->run();
         $time = Timer::stop();
 
-        $io->success('Answer: ' . $result);
-        $io->comment('Time: ' . Timer::secondsToTimeString($time));
+        $expectedAnswer = null;
+
+        if (\file_exists('.answers') && \is_readable('.answers')) {
+            $fileContent = \file_get_contents('.answers');
+
+            if (false !== $fileContent) {
+                $answers = Neon::decode($fileContent);
+
+                if (\array_key_exists('answers', $answers) && \array_key_exists($problemNr, $answers['answers'])) {
+                    $expectedAnswer = $answers['answers'][$problemNr];
+                }
+            }
+        }
+
+        if ($expectedAnswer) {
+            if ($result === "{$expectedAnswer}") {
+                $io->block("Answer: {$result}", null, 'fg=black;bg=green', '  ', true);
+            } else {
+                $io->block("Answer: {$result} (expected {$expectedAnswer})", null, 'fg=white;bg=red', '  ', true);
+            }
+        } else {
+            $io->block("Answer: {$result}", null, 'fg=black;bg=white', '  ', true);
+        }
+
+        $io->block('(Time: ' . Timer::secondsToTimeString($time) . ')');
 
         return 0;
     }
