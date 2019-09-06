@@ -16,5 +16,6 @@ parameters:
             ignore_patterns: ['.phan/']
         psalm:
             config: psalm.xml
+            ignore_patterns: ['.phan/']
         xmllint: ~
         yamllint: ~
