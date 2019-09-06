@@ -9,13 +9,14 @@ parameters:
         securitychecker: ~
         phpcsfixer2:
             config: .php_cs
-        phan: ~
+        phan:
+            config_file: phan.php
         phpstan:
             configuration: phpstan.neon
             level: ~
-            ignore_patterns: ['.phan/']
+            ignore_patterns: ['phan.php']
         psalm:
             config: psalm.xml
-            ignore_patterns: ['.phan/']
+            ignore_patterns: ['phan.php']
         xmllint: ~
         yamllint: ~
