@@ -48,6 +48,6 @@ final class FactorialDigitSum implements Problem
             return BigInteger::one();
         }
 
-        return $n->multipliedBy($this->factorial($n->minus(1)));
+        return $n->multipliedBy($this->factorial($n->minus('1')));
     }
 }
