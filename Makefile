@@ -17,8 +17,8 @@ shell: build
 			 tomtomsen/project-euler:latest \
 			 	sh
 
-.PHONY: sudo-shell
-sudo-shell: build
+.PHONY: root-shell
+root-shell: build
 	docker \
 		run \
 			--rm \
