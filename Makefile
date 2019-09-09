@@ -7,12 +7,14 @@ build: Dockerfile
 
 .PHONY: shell
 shell: build
+	[ -d .phive ] || mkdir .phive
 	docker \
 		run \
 			--rm \
 			 -ti \
 			 --user `id -u`:`id -g` \
 			 --volume ${PWD}:/data \
+			 --volume ${PWD}/.phive:/.phive \
 			 --workdir /data \
 			 tomtomsen/project-euler:latest \
 			 	sh
