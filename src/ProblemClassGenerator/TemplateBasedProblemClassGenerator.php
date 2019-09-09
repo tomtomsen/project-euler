@@ -26,11 +26,11 @@ final class TemplateBasedProblemClassGenerator implements ProblemClassGenerator
                     \trim(
                         $description,
                         "\n\r "
-                        ),
+                    ),
                     [
                         \PHP_EOL => \PHP_EOL . '            ',
                     ]
-                    ),
+                ),
             ]
         );
     }

@@ -84,8 +84,8 @@ final class LargestProductInAGrid implements Problem
         $max = 0;
 
         // horizontal
-        for ($y = 0; \count(self::grid) > $y; ++$y ) {
-            for ($x = 0; \count(self::grid[0]) - 3 > $x; ++$x ) {
+        for ($y = 0; \count(self::grid) > $y; ++$y) {
+            for ($x = 0; \count(self::grid[0]) - 3 > $x; ++$x) {
                 $product = self::grid[$y][$x] * self::grid[$y][$x + 1] * self::grid[$y][$x + 2] * self::grid[$y][$x * 3];
 
                 if ($product > $max) {
@@ -96,8 +96,8 @@ final class LargestProductInAGrid implements Problem
         }
 
         // vartical
-        for ($y = 0; \count(self::grid) - 3 > $y; ++$y ) {
-            for ($x = 0; \count(self::grid[0]) > $x; ++$x ) {
+        for ($y = 0; \count(self::grid) - 3 > $y; ++$y) {
+            for ($x = 0; \count(self::grid[0]) > $x; ++$x) {
                 $product = self::grid[$y][$x] * self::grid[$y + 1][$x] * self::grid[$y + 2][$x] * self::grid[$y + 3][$x];
 
                 if ($product > $max) {
@@ -108,8 +108,8 @@ final class LargestProductInAGrid implements Problem
         }
 
         // diagonal top-left to bottom-right
-        for ($y = 0; \count(self::grid) - 3 > $y; ++$y ) {
-            for ($x = 0; \count(self::grid[0]) - 3 > $x; ++$x ) {
+        for ($y = 0; \count(self::grid) - 3 > $y; ++$y) {
+            for ($x = 0; \count(self::grid[0]) - 3 > $x; ++$x) {
                 $product = self::grid[$y][$x] * self::grid[$y + 1][$x + 1] * self::grid[$y + 2][$x + 2] * self::grid[$y + 3][$x + 3];
 
                 if ($product > $max) {
@@ -120,8 +120,8 @@ final class LargestProductInAGrid implements Problem
         }
 
         // diagonal top-right to bottom-left
-        for ($y = 0; \count(self::grid) - 3 > $y; ++$y ) {
-            for ($x = 3; \count(self::grid[0]) > $x; ++$x ) {
+        for ($y = 0; \count(self::grid) - 3 > $y; ++$y) {
+            for ($x = 3; \count(self::grid[0]) > $x; ++$x) {
                 $product = self::grid[$y][$x] * self::grid[$y + 1][$x - 1] * self::grid[$y + 2][$x - 2] * self::grid[$y + 3][$x - 3];
 
                 if ($product > $max) {

@@ -49,7 +49,7 @@ final class TruncatablePrimes implements Problem
 
         $numStr = "{$num}";
 
-        for ($i = \mb_strlen($numStr); 1 < $i; --$i ) {
+        for ($i = \mb_strlen($numStr); 1 < $i; --$i) {
             if (!$this->isPrime((int) \mb_substr($numStr, 0, $i - 1))
             || !$this->isPrime((int) \mb_substr($numStr, -$i + 1, $i - 1))) {
                 return false;
