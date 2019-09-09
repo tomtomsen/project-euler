@@ -31,6 +31,16 @@ final class SpecialPythagoreanTriplet implements Problem
 
     public function run() : string
     {
-        throw new \RuntimeException('not implemented yet');
+        for ($a = 1; 1000 > $a; ++$a) {
+            for ($b = $a + 1; 1000 > $b; ++$b) {
+                for ($c = $b + 1; 1000 > $c; ++$c) {
+                    if (1000 === $a + $b + $c && $a * $a + $b * $b === $c * $c) {
+                        return '' . $a * $b * $c;
+                    }
+                }
+            }
+        }
+
+        throw new \RuntimeException('failed to find result');
     }
 }
