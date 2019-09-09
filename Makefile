@@ -8,6 +8,7 @@ build: Dockerfile
 .PHONY: shell
 shell: build
 	[ -d .phive ] || mkdir .phive
+	[ -d .composer ] || mkdir .composer
 	docker \
 		run \
 			--rm \
@@ -15,6 +16,7 @@ shell: build
 			 --user `id -u`:`id -g` \
 			 --volume ${PWD}:/data \
 			 --volume ${PWD}/.phive:/.phive \
+			 --volume ${PWD}/.composer:/.composer \
 			 --workdir /data \
 			 tomtomsen/project-euler:latest \
 			 	sh
