@@ -10,6 +10,7 @@ Installation
 $ make shell
 > ./tools/composer.phar install
 > ./tools/phive.phar update
+> wget -O ./tools/security-checker.phar https://get.sensiolabs.org/security-checker.phar && ln -s security-checker.phar ./tools/security-checker && chmod +x ./tools/security-checker.phar
 ```
 
 Usage
