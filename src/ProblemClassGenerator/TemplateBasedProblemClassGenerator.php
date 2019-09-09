@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace tomtomsen\ProjectEuler\ProblemClassGenerator;
 
+use tomtomsen\ProjectEuler\Problem;
+
 final class TemplateBasedProblemClassGenerator implements ProblemClassGenerator
 {
-    public function generate(int $number, string $name, string $description = '') : string
+    public function generate(Problem $problem) : string
     {
         $fileName = __DIR__ . '/ProblemClass.tpl.dist';
         $tpl = \file_get_contents($fileName);
@@ -19,12 +21,12 @@ final class TemplateBasedProblemClassGenerator implements ProblemClassGenerator
         return \strtr(
             $tpl,
             [
-                '{number}' => $number,
-                '{name}' => \strtr($name, ['\'' => '\\\'']),
-                '{className}' => \preg_replace('~ ~', '', $name),
+                '{number}' => $problem->number(),
+                '{name}' => \strtr($problem->name(), ['\'' => '\\\'']),
+                '{className}' => \preg_replace('~ ~', '', $problem->name()),
                 '{description}' => \strtr(
                     \trim(
-                        $description,
+                        $problem->description(),
                         "\n\r "
                     ),
                     [

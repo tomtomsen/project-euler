@@ -12,14 +12,21 @@ use tomtomsen\ProjectEuler\Command\GenerateCommand;
 use tomtomsen\ProjectEuler\ProblemClassGenerator\TemplateBasedProblemClassGenerator;
 use tomtomsen\ProjectEuler\ProblemFinder\FilesystemProblemFinder;
 use tomtomsen\ProjectEuler\Command\RunCommand;
+use tomtomsen\ProjectEuler\ProblemImporter\ProjectEulerSiteProblemImporter;
 
 $application = new Application();
 
-$finder = new FilesystemProblemFinder(__DIR__ . '/../problems');
+$finder = new FilesystemProblemFinder('problems');
 $application->add(new RunCommand($finder, 'run'));
 
-$client = new Psr18Client();
 $classGenerator = new TemplateBasedProblemClassGenerator();
-$application->add(new GenerateCommand($client, $classGenerator, 'generate'));
+$pageImporter = new ProjectEulerSiteProblemImporter(
+    new Psr18Client(
+        new \Symfony\Component\HttpClient\CurlHttpClient([
+            'max_redirects' => 0,
+        ])
+    )
+);
+$application->add(new GenerateCommand($pageImporter, $classGenerator, 'generate'));
 
 $application->run();
