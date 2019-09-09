@@ -91,7 +91,7 @@ final class GenerateCommand extends SymfonyCommand
         );
 
         $io = new SymfonyStyle($input, $output);
-        $io->success("Problem {$problemNr} imported");
+        $io->block("Problem {$problemNr} imported", null, 'fg=black;bg=green', ' ', true);
 
         return 0;
     }
