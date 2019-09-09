@@ -7,8 +7,9 @@ Installation
 ------------
 
 ```shell
-$ composer install
-$ phive install
+$ make shell
+> ./tools/composer.phar install
+> ./tools/phive.phar update
 ```
 
 Usage
