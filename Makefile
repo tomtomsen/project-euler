@@ -14,10 +14,10 @@ shell: build
 			--rm \
 			 -ti \
 			 --user `id -u`:`id -g` \
-			 --volume ${PWD}:/data \
+			 --volume ${PWD}:/project-euler \
 			 --volume ${PWD}/.phive:/.phive \
 			 --volume ${PWD}/.composer:/.composer \
-			 --workdir /data \
+			 --workdir /project-euler \
 			 tomtomsen/project-euler:latest \
 			 	sh
 
@@ -28,8 +28,8 @@ root-shell: build
 			--rm \
 			 -ti \
 			 --user root:root \
-			 --volume ${PWD}:/data \
-			 --workdir /data \
+			 --volume ${PWD}:/project-euler \
+			 --workdir /project-euler \
 			 tomtomsen/project-euler:latest \
 			 	sh
 
@@ -40,8 +40,8 @@ check: build
 			--rm \
 			 -ti \
 			 --user `id -u`:`id -g` \
-			 --volume ${PWD}:/data \
-			 --workdir /data \
+			 --volume ${PWD}:/project-euler \
+			 --workdir /project-euler \
 			 tomtomsen/project-euler:latest \
 			 	./tools/grumphp run
 
@@ -52,7 +52,7 @@ cs: build
 			--rm \
 			 -ti \
 			 --user `id -u`:`id -g` \
-			 --volume ${PWD}:/data \
-			 --workdir /data \
+			 --volume ${PWD}:/project-euler \
+			 --workdir /project-euler \
 			 tomtomsen/project-euler:latest \
 			 	./tools/php-cs-fixer fix .
