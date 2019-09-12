@@ -7,4 +7,5 @@ RUN apk add \
 	$PHPIZE_DEPS
 
 RUN pecl install ast \
-	&& docker-php-ext-enable ast
+    && docker-php-ext-install bcmath \
+	&& docker-php-ext-enable ast bcmath
