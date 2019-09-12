@@ -1,0 +1,13 @@
+name: CI
+
+on: [push]
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: install libraries
+        run: ./tools/composer.phar install
+      - name: update phive dependencies
+        run: ./tools/phive.phar update
