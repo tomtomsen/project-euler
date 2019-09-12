@@ -12,3 +12,5 @@ jobs:
       - uses: actions/checkout@master
       - name: install php-cs-fixer
         run: ./tools/phive.phar install --trust-gpg-keys E82B2FB314E9906E php-cs-fixer
+      - name: run php-cs-fixer
+        run: ./tools/php-cs-fixer --config .php_cs --dry-run --diff
