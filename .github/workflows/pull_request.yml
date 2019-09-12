@@ -1,0 +1,13 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: install php-cs-fixer
+        run: ./tools/phive.phar install --trust-gpg-keys E82B2FB314E9906E php-cs-fixer
