@@ -33,11 +33,8 @@ jobs:
         steps:
             - uses: actions/checkout@master
 
-            - name: Installing PHP
-              uses: shivammathur/setup-php@master
-              with:
-                  php-version: 7.3
-                  extension-csv: ast
+            - name: Installing php-ast
+              run: sudo apt-get install php-ast
 
             - name: install phan
               run: ./tools/phive.phar install --trust-gpg-keys AFA6EAAB339B841E phan
