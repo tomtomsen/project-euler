@@ -23,7 +23,7 @@ jobs:
             - uses: actions/checkout@master
 
             - name: install php-cs-fixer
-              run: ./tools/phive.phar install --trust-gpg-keys BBAB5DF0A0D6672989CF1869E82B2FB314E9906E php-cs-fixer
+              run: ./tools/phive.phar install --trust-gpg-keys E82B2FB314E9906E php-cs-fixer
 
             - name: run php-cs-fixer
               run: ./tools/php-cs-fixer fix --config=.php_cs --dry-run --diff
@@ -34,7 +34,7 @@ jobs:
             - uses: actions/checkout@master
 
             - name: install phan
-              run: ./tools/phive.phar install --trust-gpg-keys DD0E869F43C6D0B10E2E2F19AFA6EAAB339B841E phan
+              run: ./tools/phive.phar install --trust-gpg-keys AFA6EAAB339B841E phan
 
             - name: run phan
               run: ./tools/phan --config-file phan.php
@@ -45,7 +45,7 @@ jobs:
             - uses: actions/checkout@master
 
             - name: install psalm
-              run: ./tools/phive.phar install --trust-gpg-keys 5EAE7E975CE1510C4F54D4B08A03EA3B385DBAA1 psalm
+              run: ./tools/phive.phar install --trust-gpg-keys 8A03EA3B385DBAA1 psalm
 
             - name: run psalm
               run: ./tools/psalm --config=psalm.xml
