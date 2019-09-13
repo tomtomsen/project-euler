@@ -6,6 +6,7 @@ on:
             - master
 
 jobs:
+
     security-checker:
         runs-on: ubuntu-latest
         steps:
@@ -16,6 +17,28 @@ jobs:
 
             - name: run security check
               run: ./tools/security-checker security:check
+
+    composer-require-checker:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
+
+            - name: install composer-require-checker
+              run: ./tools/phive.phar install --trust-gpg-keys D2CCAC42F6295E7D composer-require-checker
+
+            - name: install composer packages
+              run: ./tools/composer.phar install
+
+            - name: run composer-require-checker
+              run: ./tools/composer-require-checker
+
+    composer-normalize:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
+
+            - name: run composer-normalize
+              uses: docker://localheinz/composer-normalize-action:latest
 
     php-cs-fixer:
         runs-on: ubuntu-latest
