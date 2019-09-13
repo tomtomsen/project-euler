@@ -1,16 +1,51 @@
 name: CI
 
 on:
-  pull_request:
-    branches:
-      - master
+    pull_request:
+        branches:
+            - master
 
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - name: install php-cs-fixer
-        run: ./tools/phive.phar install --trust-gpg-keys E82B2FB314E9906E php-cs-fixer
-      - name: run php-cs-fixer
-        run: ./tools/php-cs-fixer fix --config=.php_cs --dry-run --diff
+    security-checker:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
+
+            - name: install security-checker
+              run: wget -O ./tools/security-checker.phar https://get.sensiolabs.org/security-checker.phar && ln -s security-checker.phar ./tools/security-checker && chmod +x ./tools/security-checker.phar
+
+            - name: run security check
+              run: ./tools/security-checker security:check
+
+    php-cs-fixer:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
+
+            - name: install php-cs-fixer
+              run: ./tools/phive.phar install --trust-gpg-keys E82B2FB314E9906E php-cs-fixer
+
+            - name: run php-cs-fixer
+              run: ./tools/php-cs-fixer fix --config=.php_cs --dry-run --diff
+
+    phan:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
+
+            - name: install phan
+              run: ./tools/phive.phar install --trust-gpg-keys 98c0134b99a2619a2b27d82efe72294bacfd1117 phan
+
+            - name: run phan
+              run: ./tools/phan --config-file phan.php
+
+    psalm:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
+
+            - name: install psalm
+              run: ./tools/phive.phar install --trust-gpg-keys 51ca90f2ab106b09e074f370d868b9c4640d0bb7 psalm
+
+            - name: run psalm
+              run: ./tools/psalm --config=psalm.xml
