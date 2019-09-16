@@ -89,7 +89,7 @@ jobs:
             - uses: actions/checkout@master
 
             - name: build docker image
-              run: docker build --file Dockerfile --tag tomtomsen/project-euler:build-${GITHUB_REF} .
+              run: docker build --file Dockerfile --tag tomtomsen/project-euler:build-${GITHUB_SHA} .
 
             - name: run docker image
-              run: docker run --rm tomtomsen/project-euler:build-${GITHUB_REF} run 1
+              run: docker run --rm tomtomsen/project-euler:build-${GITHUB_SHA} run 1
