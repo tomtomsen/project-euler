@@ -6,7 +6,7 @@ build: Dockerfile
 			.
 
 .PHONY: shell
-shell: build
+shell:
 	[ -d .phive ] || mkdir .phive
 	[ -d .composer ] || mkdir .composer
 	docker \
@@ -18,8 +18,9 @@ shell: build
 			 --volume ${PWD}/.phive:/.phive \
 			 --volume ${PWD}/.composer:/.composer \
 			 --workdir /project-euler \
+			 --entrypoint sh \
 			 tomtomsen/project-euler:latest \
-			 	sh
+
 
 .PHONY: root-shell
 root-shell: build
