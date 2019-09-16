@@ -86,7 +86,7 @@ jobs:
         runs-on: ubuntu-latest
         needs: [psalm, phan, php-cs-fixer, composer-normalize, composer-require-checker, security-checker]
         steps:
-            - uses: actions/checkkout@master
+            - uses: actions/checkout@master
 
             - name: build docker image
               run: docker build --file Dockerfile --tag tomtomsen/project-euler:build
