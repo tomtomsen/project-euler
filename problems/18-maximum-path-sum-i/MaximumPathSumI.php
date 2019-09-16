@@ -8,24 +8,6 @@ use tomtomsen\ProjectEuler\Problem;
 
 final class MaximumPathSumI implements Problem
 {
-    public const NUMBERS = [
-        [75],
-        [95, 64],
-        [17, 47, 82],
-        [18, 35, 87, 10],
-        [20,  4, 82, 47, 65],
-        [19,  1, 23, 75,  3, 34],
-        [88,  2, 77, 73,  7, 63, 67],
-        [99, 65,  4, 28,  6, 16, 70, 92],
-        [41, 41, 26, 56, 83, 40, 80, 70, 33],
-        [41, 48, 72, 33, 47, 32, 37, 16, 94, 29],
-        [53, 71, 44, 65, 25, 43, 91, 52, 97, 51, 14],
-        [70, 11, 33, 28, 77, 73, 17, 78, 39, 68, 17, 57],
-        [91, 71, 52, 38, 17, 14, 91, 43, 58, 50, 27, 29, 48],
-        [63, 66,  4, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31],
-        [04, 62, 98, 27, 23,  9, 70, 98, 73, 93, 38, 53, 60,  4, 23],
-    ];
-
     public function number() : int
     {
         return 18;
@@ -66,23 +48,40 @@ final class MaximumPathSumI implements Problem
             DESCRIPTION;
     }
 
+    /**
+     * starting from the base (-1 row), move upwards.
+     * take the larger number and add to current number.
+     * in the end the maximal amount will be in the root node.
+     */
     public function run() : string
     {
-        $max = 0;
-        $this->sum(0, 0, 0, $max);
+        $numbers = [
+            [75],
+            [95, 64],
+            [17, 47, 82],
+            [18, 35, 87, 10],
+            [20,  4, 82, 47, 65],
+            [19,  1, 23, 75,  3, 34],
+            [88,  2, 77, 73,  7, 63, 67],
+            [99, 65,  4, 28,  6, 16, 70, 92],
+            [41, 41, 26, 56, 83, 40, 80, 70, 33],
+            [41, 48, 72, 33, 47, 32, 37, 16, 94, 29],
+            [53, 71, 44, 65, 25, 43, 91, 52, 97, 51, 14],
+            [70, 11, 33, 28, 77, 73, 17, 78, 39, 68, 17, 57],
+            [91, 71, 52, 38, 17, 14, 91, 43, 58, 50, 27, 29, 48],
+            [63, 66,  4, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31],
+            [04, 62, 98, 27, 23,  9, 70, 98, 73, 93, 38, 53, 60,  4, 23],
+        ];
 
-        return "{$max}";
-    }
+        for ($i = \count($numbers) - 1; 1 <= $i; --$i ) {
+            for ($j = 0; \count($numbers[$i]) - 1 > $j; ++$j ) {
+                $left = $numbers[$i][$j];
+                $right = $numbers[$i][$j + 1];
 
-    private function sum(int $line, int $idx, int $current, int &$max) : void
-    {
-        if (\count(self::NUMBERS) === $line) {
-            $max = \max($max, $current);
-
-            return;
+                $numbers[$i - 1][$j] += \max($left, $right);
+            }
         }
 
-        $this->sum($line + 1, $idx, $current + self::NUMBERS[$line][$idx], $max);
-        $this->sum($line + 1, $idx + 1, $current + self::NUMBERS[$line][$idx], $max);
+        return "{$numbers[0][0]}";
     }
 }
