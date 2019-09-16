@@ -73,8 +73,8 @@ final class MaximumPathSumI implements Problem
             [04, 62, 98, 27, 23,  9, 70, 98, 73, 93, 38, 53, 60,  4, 23],
         ];
 
-        for ($i = \count($numbers) - 1; 1 <= $i; --$i ) {
-            for ($j = 0; \count($numbers[$i]) - 1 > $j; ++$j ) {
+        for ($i = \count($numbers) - 1; 1 <= $i; --$i) {
+            for ($j = 0; \count($numbers[$i]) - 1 > $j; ++$j) {
                 $left = $numbers[$i][$j];
                 $right = $numbers[$i][$j + 1];
 
