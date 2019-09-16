@@ -88,8 +88,10 @@ jobs:
         steps:
             - uses: actions/checkout@master
 
+            - uses: actions/docker/cli@master
+              args: "build -t user/repo ."
             - name: build docker image
-              run: docker build --file Dockerfile --tag tomtomsen/project-euler:build .
+              run: docker build --file Dockerfile --tag tomtomsen/project-euler:build-${GITHUB_SHA} .
 
             - name: run docker image
-              run: docker run --rm tomtomsen/project-euler:build run 1
+              run: docker run --rm tomtomsen/project-euler:build-${GITHUB_SHA} run 1
