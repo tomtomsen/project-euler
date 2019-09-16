@@ -92,4 +92,4 @@ jobs:
               run: docker build --file Dockerfile --tag tomtomsen/project-euler:build .
 
             - name: run docker image
-              run: docker run --rm -ti tomtomsen/project-euler:build run 1
+              run: docker run --rm tomtomsen/project-euler:build run 1
