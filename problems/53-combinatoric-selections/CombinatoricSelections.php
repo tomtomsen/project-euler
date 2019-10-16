@@ -9,6 +9,7 @@ use tomtomsen\ProjectEuler\Problem;
 
 final class CombinatoricSelections implements Problem
 {
+    /** @var array<int, BigInteger> */
     private $factorials;
 
     public function number() : int
@@ -59,7 +60,7 @@ final class CombinatoricSelections implements Problem
         return "{$count}";
     }
 
-    private function over($n, $r) : BigInteger
+    private function over(int $n, int $r) : BigInteger
     {
         return $this->factorials[$n]->dividedBy(
             $this->factorials[$r]->multipliedBy(
